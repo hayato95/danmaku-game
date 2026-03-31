@@ -6,10 +6,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D playerRigidbody;
     private Vector2 moveDirection;
+    private Vector3 minbounds;
+    private Vector3 maxbounds;
 
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        minbounds = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        maxbounds = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
     }
 
     // New Input SystemÇ™é©ìÆÇ≈åƒÇ‘ÉÅÉ\ÉbÉh
@@ -24,5 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         // éŒÇﬂà⁄ìÆÇ≈ë¨Ç≠Ç»ÇÁÇ»Ç¢ÇÊÇ§ê≥ãKâª
         playerRigidbody.linearVelocity = moveDirection.normalized * moveSpeed;
+
+        float clampedX = Mathf.Clamp(transform.position.x, minbounds.x, maxbounds.x);
+        float clampedY = Mathf.Clamp(transform.position.y, minbounds.y, maxbounds.y);
+        transform.position = new Vector2(clampedX, clampedY);
     }
 }   
