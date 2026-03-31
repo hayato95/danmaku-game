@@ -41,4 +41,15 @@ public class PlayerController : MonoBehaviour
     {
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 触れたオブジェクトがEnemyBulletレイヤーか確認
+        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
+        {
+            // ゲームオーバー処理（今はログだけ）
+            Debug.Log("ゲームオーバー");
+            gameObject.SetActive(false); // Playerを非表示にする
+        }
+    }
 }   
