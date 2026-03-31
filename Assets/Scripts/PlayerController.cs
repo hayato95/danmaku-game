@@ -4,6 +4,7 @@ using UnityEngine.InputSystem; //
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private GameObject bulletPrefab; // Å© í«â¡
     private Rigidbody2D playerRigidbody;
     private Vector2 moveDirection;
     private Vector3 minbounds;
@@ -33,5 +34,11 @@ public class PlayerController : MonoBehaviour
         float clampedX = Mathf.Clamp(transform.position.x, minbounds.x, maxbounds.x);
         float clampedY = Mathf.Clamp(transform.position.y, minbounds.y, maxbounds.y);
         transform.position = new Vector2(clampedX, clampedY);
+    }
+
+    //Quaternion.identityÇÕâÒì]Ç»ÇµÇÃÇ±Ç∆
+    void OnFire(InputValue inputValue)
+    {
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 }   
