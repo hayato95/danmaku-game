@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float fireInterval = 2f;
+    [SerializeField] private int enemyHP = 3;
 
     private float fireTimer = 0f;
 
@@ -29,5 +30,18 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
+        {
+            enemyHP--;
+            Destroy(other.gameObject); // ƒvƒŒƒCƒ„[‚Ì’e‚ğ”j‰ó
+            if(enemyHP <= 0)
+            {
+                Destroy(gameObject); // Enemy‚ğ”j‰ó
+            }
+        }
     }
 }
