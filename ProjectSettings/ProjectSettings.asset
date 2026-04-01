@@ -605,8 +605,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: "\u5F3E\u5E55(\u672A\u5B9A)"
-  metroPackageVersion: 
+  metroPackageName: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -614,7 +614,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: "\u5F3E\u5E55(\u672A\u5B9A)"
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: "\u5F3E\u5E55(\u672A\u5B9A)"
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
