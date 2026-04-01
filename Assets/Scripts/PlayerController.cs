@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem; //
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
 
 public class PlayerController : MonoBehaviour
 {
@@ -47,9 +48,7 @@ public class PlayerController : MonoBehaviour
         // 触れたオブジェクトがEnemyBulletレイヤーか確認
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
         {
-            // ゲームオーバー処理（今はログだけ）
-            Debug.Log("ゲームオーバー");
-            gameObject.SetActive(false); // Playerを非表示にする
+            SceneManager.LoadScene("GameOverScene"); // GameOverSceneに遷移)
         }
     }
 }   
