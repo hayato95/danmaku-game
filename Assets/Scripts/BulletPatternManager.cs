@@ -23,4 +23,10 @@ public class BulletPatternManager : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * 5f;
         }
     }
+
+    public void FireStraight()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * 5f;
+    }
 }
