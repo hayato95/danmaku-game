@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6190409664414419332}
   - component: {fileID: 6316565113180720312}
   - component: {fileID: 2001338642096562187}
+  - component: {fileID: 5329155284969919261}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -170,5 +171,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   moveSpeed: 2
-  bulletPrefab: {fileID: 2969203225679381309, guid: 920c3337320d1534bba89013eae3b77c, type: 3}
   fireInterval: 2
+  enemyHP: 3
+  bulletPatternManager: {fileID: 5329155284969919261}
+--- !u!114 &5329155284969919261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957917269510298805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a035d93711f8b248b04699cc5efb75a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPatternManager
+  bulletPrefab: {fileID: 2969203225679381309, guid: 920c3337320d1534bba89013eae3b77c, type: 3}
+  spreadCount: 3
+  spreadAngle: 120

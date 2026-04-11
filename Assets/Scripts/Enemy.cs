@@ -3,9 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float fireInterval = 2f;
     [SerializeField] private int enemyHP = 3;
+    [SerializeField] private BulletPatternManager bulletPatternManager;
 
     private float fireTimer = 0f;
 
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bulletPatternManager.FireSpread();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
