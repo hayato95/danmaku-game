@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+        Move();
         fireTimer += Time.deltaTime;
 
         if (fireTimer >= fireInterval)
@@ -25,6 +25,11 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject); // Enemy‚ð”j‰ó
 
         }
+    }
+
+    public virtual void Move()
+    {
+        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
     }
 
     private void Fire()
