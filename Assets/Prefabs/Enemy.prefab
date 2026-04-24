@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1112306173934617598}
   - component: {fileID: 6190409664414419332}
   - component: {fileID: 6316565113180720312}
-  - component: {fileID: 2001338642096562187}
   - component: {fileID: 5329155284969919261}
+  - component: {fileID: 8079014270078637726}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -158,22 +158,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.49999997
---- !u!114 &2001338642096562187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6957917269510298805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de5c10e233a9ba43b6bdedec33a3e87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  moveSpeed: 1
-  fireInterval: 2
-  enemyHP: 3
-  bulletPatternManager: {fileID: 5329155284969919261}
 --- !u!114 &5329155284969919261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +173,19 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2969203225679381309, guid: 920c3337320d1534bba89013eae3b77c, type: 3}
   spreadCount: 3
   spreadAngle: 120
+--- !u!114 &8079014270078637726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957917269510298805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7885b8c33fa419c4cc1de399be7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStraight
+  moveSpeed: 2
+  fireInterval: 2
+  enemyHP: 3
+  bulletPatternManager: {fileID: 5329155284969919261}

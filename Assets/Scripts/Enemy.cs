@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] private float fireInterval = 2f;
     [SerializeField] private int enemyHP = 3;
     [SerializeField] private BulletPatternManager bulletPatternManager;
@@ -27,10 +27,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public virtual void Move()
-    {
-        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
-    }
+    public abstract void Move();
 
     private void Fire()
     {
