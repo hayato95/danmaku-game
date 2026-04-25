@@ -4,7 +4,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] private float fireInterval = 2f;
-    [SerializeField] private int enemyHP = 3;
+    [SerializeField] protected int enemyHP = 3;
     [SerializeField] private BulletPatternManager bulletPatternManager;
 
     private float fireTimer = 0f;
@@ -20,6 +20,15 @@ public abstract class Enemy : MonoBehaviour
             fireTimer = 0f;
         }
 
+        CheckBoundary();
+
+    }
+
+    protected abstract void Move();
+
+
+    protected virtual void CheckBoundary()
+    {
         if (transform.position.y < -6f) // ‰æ–ÊŠO‚Éo‚½‚ç
         {
             Destroy(gameObject); // Enemy‚ð”j‰ó
@@ -27,14 +36,12 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public abstract void Move();
-
     private void Fire()
     {
         bulletPatternManager.FireSpread();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void  OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {

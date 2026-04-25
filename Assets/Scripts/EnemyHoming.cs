@@ -10,7 +10,7 @@ public class EnemyHoming : Enemy
         playerTransform = FindFirstObjectByType<PlayerController>().transform;
     }
 
-    public override void Move()
+    protected override void Move()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         transform.Translate(direction * moveSpeed * Time.deltaTime);
