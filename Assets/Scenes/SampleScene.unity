@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f95fdfa329e7404cb0d9fea6407b2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  enemyPrefab: {fileID: 6957917269510298805, guid: 202989d3135bc3244aa1ceb123d4aaad, type: 3}
+  enemyPrefab: {fileID: 6957917269510298805, guid: 50c12ead73aca2644ab3cf6ae0acb84c, type: 3}
   enemiesPerWave: 5
   spawnInterval: 1
   waveCooldown: 3

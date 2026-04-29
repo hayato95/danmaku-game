@@ -3,6 +3,7 @@ using UnityEngine;
 public class Boss : Enemy
 {
     [SerializeField] private int MaxHP = 100;
+    [SerializeField] private float moveRangeX = 2.5f;
     private int phaseNumber = 1;
 
     private void Start()
@@ -33,7 +34,8 @@ public class Boss : Enemy
 
     protected override void Move() 
     {
-        //èàóù
+        float currentX = Mathf.Sin(Time.time) * moveRangeX * moveSpeed;
+        transform.position = new Vector3(currentX, transform.position.y, transform.position.z);
     }
 
     protected override void CheckBoundary()
