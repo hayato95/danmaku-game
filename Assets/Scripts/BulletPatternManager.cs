@@ -6,11 +6,28 @@ public class BulletPatternManager : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int spreadCount = 3;
     [SerializeField] private float spreadAngle = 30f;
+    private Transform playerTransform;
 
-    /// <summary>
-    /// スプレッド弾を発射する。spreadCount発をspreadAngleの範囲で均等に散らす
-    /// </summary>
-    public void FireSpread()
+    void Start()
+    {
+        playerTransform = FindFirstObjectByType<PlayerController>().transform;
+
+    }
+
+
+    
+    public void FireAimed(float bulletSpeed)
+    {
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
+
+
+    }
+
+
+
+    public void FireSpread(float bulletSpeed)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (spreadCount - 1);
@@ -20,13 +37,13 @@ public class BulletPatternManager : MonoBehaviour
             float angle = startAngle + angleStep * i;
             Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.down;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * 5f;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
         }
     }
 
-    public void FireStraight()
+    public void FireStraight(float bulletSpeed)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * 5f;
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * bulletSpeed;
     }
 }
