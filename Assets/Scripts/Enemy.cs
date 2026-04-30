@@ -5,8 +5,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] private float fireInterval = 2f;
     [SerializeField] protected int enemyHP = 3;
-    [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private BulletPatternManager bulletPatternManager;
+    [SerializeField] protected float bulletSpeed = 5f;
+    [SerializeField] protected BulletPatternManager bulletPatternManager;
 
     private float fireTimer = 0f;
 
@@ -37,7 +37,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    private void Fire()
+    protected virtual void Fire()
     {
         bulletPatternManager.FireAimed(bulletSpeed);
     }

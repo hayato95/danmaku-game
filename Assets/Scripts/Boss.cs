@@ -4,6 +4,7 @@ public class Boss : Enemy
 {
     [SerializeField] private int MaxHP = 100;
     [SerializeField] private float moveRangeX = 2.5f;
+    [SerializeField] private int allDirectionsBulletCount = 12;
     private int phaseNumber = 1;
 
     private void Start()
@@ -41,6 +42,15 @@ public class Boss : Enemy
     protected override void CheckBoundary()
     {
         //èàóù
+    }
+
+
+    protected override void Fire()
+    {
+        if(phaseNumber == 1)
+        {
+            bulletPatternManager.FireAllDirections(bulletSpeed, allDirectionsBulletCount);
+        }
     }
 
 }

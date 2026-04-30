@@ -46,4 +46,17 @@ public class BulletPatternManager : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * bulletSpeed;
     }
+
+
+    public void FireAllDirections(float bulletSpeed, int bulletCount)
+    {
+        float angleStep = 360f / bulletCount;
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float angle = angleStep * i;
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.down;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
+        }
+    }
 }
