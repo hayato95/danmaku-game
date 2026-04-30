@@ -5,11 +5,13 @@ public class Boss : Enemy
     [SerializeField] private int MaxHP = 100;
     [SerializeField] private float moveRangeX = 2.5f;
     [SerializeField] private int allDirectionsBulletCount = 12;
-    private int phaseNumber = 1;
+    [SerializeField]private int phaseNumber = 1;
 
     private void Start()
     {
       enemyHP = MaxHP;
+      bulletSpeed = 1f;
+      fireInterval = 0.2f;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
@@ -24,6 +26,8 @@ public class Boss : Enemy
         if ((enemyHP * 100) / MaxHP <= 66 && phaseNumber == 1)
         {
             phaseNumber = 2;
+            bulletSpeed = 5f;
+            fireInterval = 0.02f;
         }
 
         if ((enemyHP * 100) / MaxHP <= 33 && phaseNumber == 2)
@@ -50,6 +54,12 @@ public class Boss : Enemy
         if(phaseNumber == 1)
         {
             bulletPatternManager.FireAllDirections(bulletSpeed, allDirectionsBulletCount);
+        }
+
+        if(phaseNumber == 2)
+        {
+            
+            bulletPatternManager.FireSpiral(bulletSpeed, 11f);
         }
     }
 

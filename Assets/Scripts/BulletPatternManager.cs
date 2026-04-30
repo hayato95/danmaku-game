@@ -6,6 +6,7 @@ public class BulletPatternManager : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int spreadCount = 3;
     [SerializeField] private float spreadAngle = 30f;
+    private float currentAngle = 0f;
     private Transform playerTransform;
 
     void Start()
@@ -59,4 +60,15 @@ public class BulletPatternManager : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
         }
     }
+
+
+    public void FireSpiral (float bulletSpeed, float angleStep)
+    {
+        Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * Vector2.down;
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
+        currentAngle += angleStep;
+
+    }
+
 }

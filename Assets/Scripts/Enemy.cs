@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed = 2f;
-    [SerializeField] private float fireInterval = 2f;
+    [SerializeField] protected float fireInterval = 2f;
     [SerializeField] protected int enemyHP = 3;
     [SerializeField] protected float bulletSpeed = 5f;
     [SerializeField] protected BulletPatternManager bulletPatternManager;

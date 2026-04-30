@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84201c66464778045ab8fc6bf1f5f313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
-  moveSpeed: 0.5
+  moveSpeed: 1
   fireInterval: 0.2
   enemyHP: 3
   bulletSpeed: 1
@@ -193,3 +193,4 @@ MonoBehaviour:
   MaxHP: 100
   moveRangeX: 1.5
   allDirectionsBulletCount: 12
+  phaseNumber: 1
