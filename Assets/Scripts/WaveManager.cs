@@ -3,6 +3,16 @@ using System.Collections;
 
 public class  WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance { get; private set;}
+    private int remainingEnemies = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+        
+    }
+
+
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private int enemiesPerWave = 5;
     [SerializeField] private float spawnInterval = 1f;
@@ -36,12 +46,22 @@ public class  WaveManager : MonoBehaviour
             SpawnEnemy();
             yield return new WaitForSeconds(spawnInterval); //ˆê‘Ì‚¸‚ÂŠÔŠu‚ðŠJ‚¯‚ÄƒXƒ|[ƒ“‚³‚¹‚é
         }
+
+        yield return new WaitUntil(() => remainingEnemies <= 0); //‘S‚Ä‚Ì“G‚ª“|‚³‚ê‚é‚Ü‚Å‘Ò‚Â  
+
     }
 
     private void SpawnEnemy()
     {
+
         float randomX = Random.Range(-2.5f, 2.5f);
         Vector3 spawnPos = new Vector3(randomX, 6f, 0);
         Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        remainingEnemies++;
+    }
+
+    public void OnEnemyDefeated()
+    {
+        remainingEnemies--;
     }
 }

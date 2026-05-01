@@ -30,10 +30,9 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void CheckBoundary()
     {
-        if (transform.position.y < -6f) // ‰æ–ÊŠO‚Éo‚½‚ç
+        if (Mathf.Abs(transform.position.x) > 3f || Mathf.Abs(transform.position.y) > 6f) // ‰æ–ÊŠO‚Éo‚½‚ç
         {
-            Destroy(gameObject); // Enemy‚ğ”j‰ó
-
+            OnDied();
         }
     }
 
@@ -50,8 +49,15 @@ public abstract class Enemy : MonoBehaviour
             Destroy(other.gameObject); // ƒvƒŒƒCƒ„[‚Ì’e‚ğ”j‰ó
             if(enemyHP <= 0)
             {
-                Destroy(gameObject); // Enemy‚ğ”j‰ó
+                OnDied();
             }
         }
     }
+
+    protected virtual void OnDied()
+    {
+        WaveManager.Instance.OnEnemyDefeated(); // WaveManager‚É“G‚ª“|‚³‚ê‚½‚±‚Æ‚ğ’Ê’m
+        Destroy(gameObject);
+    }
+
 }
