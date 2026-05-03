@@ -18,6 +18,7 @@ public class  WaveManager : MonoBehaviour
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private float waveCooldown = 3f;
     [SerializeField] private int totalWaves = 5;
+    [SerializeField] private GameObject bossPrefab;
 
     private int currentWave = 0;
 
@@ -37,6 +38,8 @@ public class  WaveManager : MonoBehaviour
             yield return new WaitForSeconds(waveCooldown); // 次のWaveまでのクールダウン
 
         }
+
+        SpawnBoss(); // 全てのWaveが終了したらボスをスポーン
     }
 
     private IEnumerator SpawnWaves()
@@ -63,5 +66,11 @@ public class  WaveManager : MonoBehaviour
     public void OnEnemyDefeated()
     {
         remainingEnemies--;
+    }
+
+
+    private void SpawnBoss()
+    {
+        Instantiate(bossPrefab, new Vector3(0, 6f, 0), Quaternion.identity);
     }
 }

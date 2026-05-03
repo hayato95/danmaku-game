@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -6,6 +7,8 @@ public class Boss : Enemy
     [SerializeField] private float moveRangeX = 2.5f;
     [SerializeField] private int allDirectionsBulletCount = 12;
     [SerializeField]private int phaseNumber = 1;
+    private bool isReady = false;
+    private bool waitForBoss = false;
 
     private void Start()
     {
@@ -39,8 +42,25 @@ public class Boss : Enemy
 
     protected override void Move() 
     {
-        float currentX = Mathf.Sin(Time.time) * moveRangeX * moveSpeed;
-        transform.position = new Vector3(currentX, transform.position.y, transform.position.z);
+        if(isReady == false)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, 0);
+            if(transform.position.y <= 4f)
+            {
+                isReady = true;
+                transform.position = new Vector3(transform.position.x, 4f, 0);
+                waitForBoss = true;
+                StartCoroutine(BossEntrance());
+            }
+        }
+
+        else
+        {
+            if(waitForBoss) return;
+            float currentX = Mathf.Sin(Time.time) * moveRangeX * moveSpeed;
+            transform.position = new Vector3(currentX, transform.position.y, transform.position.z);
+        }
+        
     }
 
     protected override void CheckBoundary()
@@ -51,7 +71,10 @@ public class Boss : Enemy
 
     protected override void Fire()
     {
-        if(phaseNumber == 1)
+        if (isReady == false) return;
+        if(waitForBoss) return;
+
+        if (phaseNumber == 1)
         {
             bulletPatternManager.FireAllDirections(bulletSpeed, allDirectionsBulletCount);
         }
@@ -63,4 +86,9 @@ public class Boss : Enemy
         }
     }
 
+    private IEnumerator BossEntrance()
+    {
+        yield return new WaitForSeconds(2f);
+        waitForBoss = false;
+    }
 }
