@@ -62,9 +62,9 @@ public class BulletPatternManager : MonoBehaviour
     }
 
 
-    public void FireSpiral (float bulletSpeed, float angleStep)
+    public void FireSpiral (float bulletSpeed, float angleStep, float offset)
     {
-        Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * Vector2.down;
+        Vector2 direction = Quaternion.Euler(0, 0, currentAngle + offset) * Vector2.down;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * bulletSpeed;
         currentAngle += angleStep;
