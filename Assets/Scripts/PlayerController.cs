@@ -19,18 +19,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // New Input Systemが自動で呼ぶメソッド
-    // Playerオブジェクトに"Player Input"コンポーネントが必要
-    void OnMove(InputValue inputValue)
-    {  
-        // InputValueから2D方向を取得
-        moveDirection = inputValue.Get<Vector2>();
-    }
 
     void Update()
     {
-        // 斜め移動で速くならないよう正規化
-        playerRigidbody.linearVelocity = moveDirection.normalized * moveSpeed;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        transform.position = new Vector3(mousePos.x, mousePos.y, 0);
 
         float clampedX = Mathf.Clamp(transform.position.x, minbounds.x, maxbounds.x);
         float clampedY = Mathf.Clamp(transform.position.y, minbounds.y, maxbounds.y);
