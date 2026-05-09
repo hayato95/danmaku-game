@@ -82,7 +82,13 @@ public class Boss : Enemy
         if(phaseNumber == 2)
         {
             
-            bulletPatternManager.FireSpiral(bulletSpeed, 11f);
+            bulletPatternManager.FireSpiral(bulletSpeed, 11f, 0f);
+        }
+
+        if(phaseNumber == 3)
+        {
+            bulletPatternManager.FireSpiral(bulletSpeed, 11f, 0f);
+            bulletPatternManager.FireSpiral(bulletSpeed, 11f, 180f);
         }
     }
 
