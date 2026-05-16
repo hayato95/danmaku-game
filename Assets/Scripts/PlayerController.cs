@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(PauseManager.Instance.isPaused) return; // ƒQ[ƒ€‚ªˆê’â~’†‚È‚çXV‚µ‚È‚¢
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
 

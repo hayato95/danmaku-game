@@ -4,7 +4,14 @@ using UnityEngine.InputSystem;
 public class PauseManager : MonoBehaviour
 {
 
-    bool isPaused = false;
+    public bool isPaused = false;
+    public static PauseManager Instance { get; private set; }
+
+
+    private void Awake()
+    {
+        Instance = this;  
+    }
 
     public void Pause()
     {
