@@ -13,12 +13,9 @@ public class  WaveManager : MonoBehaviour
     }
 
 
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private int enemiesPerWave = 5;
-    [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private float waveCooldown = 3f;
-    [SerializeField] private int totalWaves = 5;
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private WaveData[] waves; // ScriptableObjectで定義されたWaveのデータ
 
     private int currentWave = 0;
 
@@ -29,12 +26,11 @@ public class  WaveManager : MonoBehaviour
 
     private IEnumerator RunWaves()
     {
-        while(currentWave < totalWaves)
+        while(currentWave < waves.Length)
         {
-            currentWave++;
             Debug.Log($"Wave {currentWave} starting!");
-
             yield return StartCoroutine(SpawnWaves());
+            currentWave++;
             yield return new WaitForSeconds(waveCooldown); // 次のWaveまでのクールダウン
 
         }
@@ -44,10 +40,10 @@ public class  WaveManager : MonoBehaviour
 
     private IEnumerator SpawnWaves()
     {
-        for(int i=0; i< enemiesPerWave; i++)
+        for(int i=0; i< waves[currentWave].EnemyCount ; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(spawnInterval); //一体ずつ間隔を開けてスポーンさせる
+            yield return new WaitForSeconds(waves[currentWave].SpawnInterval); //一体ずつ間隔を開けてスポーンさせる
         }
 
         yield return new WaitUntil(() => remainingEnemies <= 0); //全ての敵が倒されるまで待つ  
@@ -59,7 +55,7 @@ public class  WaveManager : MonoBehaviour
 
         float randomX = Random.Range(-2.5f, 2.5f);
         Vector3 spawnPos = new Vector3(randomX, 6f, 0);
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(waves[currentWave].EnemyPrefab, spawnPos, Quaternion.identity);
         remainingEnemies++;
     }
 
