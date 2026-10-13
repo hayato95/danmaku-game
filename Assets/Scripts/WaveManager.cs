@@ -15,7 +15,7 @@ public class  WaveManager : MonoBehaviour
 
     [SerializeField] private float waveCooldown = 3f;
     [SerializeField] private GameObject bossPrefab;
-    [SerializeField] private WaveData[] waves; // ScriptableObject‚Å’è‹`‚³‚ê‚½Wave‚Ìƒf[ƒ^
+    [SerializeField] private WaveData[] waves; // ScriptableObjectã§å®šç¾©ã•ã‚ŒãŸWaveã®ãƒ‡ãƒ¼ã‚¿
 
     private int currentWave = 0;
 
@@ -31,11 +31,11 @@ public class  WaveManager : MonoBehaviour
             Debug.Log($"Wave {currentWave} starting!");
             yield return StartCoroutine(SpawnWaves());
             currentWave++;
-            yield return new WaitForSeconds(waveCooldown); // Ÿ‚ÌWave‚Ü‚Å‚ÌƒN[ƒ‹ƒ_ƒEƒ“
+            yield return new WaitForSeconds(waveCooldown); // æ¬¡ã®Waveã¾ã§ã®ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³
 
         }
 
-        SpawnBoss(); // ‘S‚Ä‚ÌWave‚ªI—¹‚µ‚½‚çƒ{ƒX‚ğƒXƒ|[ƒ“
+        SpawnBoss(); // å…¨ã¦ã®WaveãŒçµ‚äº†ã—ãŸã‚‰ãƒœã‚¹ã‚’ã‚¹ãƒãƒ¼ãƒ³
     }
 
     private IEnumerator SpawnWaves()
@@ -43,10 +43,10 @@ public class  WaveManager : MonoBehaviour
         for(int i=0; i< waves[currentWave].EnemyCount ; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(waves[currentWave].SpawnInterval); //ˆê‘Ì‚¸‚ÂŠÔŠu‚ğŠJ‚¯‚ÄƒXƒ|[ƒ“‚³‚¹‚é
+            yield return new WaitForSeconds(waves[currentWave].SpawnInterval); //ä¸€ä½“ãšã¤é–“éš”ã‚’é–‹ã‘ã¦ã‚¹ãƒãƒ¼ãƒ³ã•ã›ã‚‹
         }
 
-        yield return new WaitUntil(() => remainingEnemies <= 0); //‘S‚Ä‚Ì“G‚ª“|‚³‚ê‚é‚Ü‚Å‘Ò‚Â  
+        yield return new WaitUntil(() => remainingEnemies <= 0); //å…¨ã¦ã®æ•µãŒå€’ã•ã‚Œã‚‹ã¾ã§å¾…ã¤  
 
     }
 

@@ -10,7 +10,7 @@ public class PlayerBullet : MonoBehaviour
     {
         bulletRigidBody = GetComponent<Rigidbody2D>();
 
-        //ã•ûŒü‚É’e‚ğ”­Ë
+        //ä¸Šæ–¹å‘ã«å¼¾ã‚’ç™ºå°„
         bulletRigidBody.linearVelocity = Vector2.up * bulletSpeed;
 
         topBound =Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;

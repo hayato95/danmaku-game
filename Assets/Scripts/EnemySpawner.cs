@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float spawnInterval = 2f;
 
-    //ŒŸØ—p‚Åˆê’U2f‚É‚µ‚Ä‚¢‚é‚ªAÅI“I‚É‚ÍƒQ[ƒ€‚Ìƒoƒ‰ƒ“ƒX‚ğŒ©‚Ä’²®‚·‚é—\’è
+    //æ¤œè¨¼ç”¨ã§ä¸€æ—¦2fã«ã—ã¦ã„ã‚‹ãŒã€æœ€çµ‚çš„ã«ã¯ã‚²ãƒ¼ãƒ ã®ãƒãƒ©ãƒ³ã‚¹ã‚’è¦‹ã¦èª¿æ•´ã™ã‚‹äºˆå®š
     [SerializeField] private float spawnRangeX = 2f;
 
     private float spawnTimer = 0f;

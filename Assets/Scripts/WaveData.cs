@@ -4,7 +4,7 @@ using UnityEngine;
 public class WaveData
 {
     [SerializeField] private GameObject enemyPrefab;
-    public GameObject EnemyPrefab => enemyPrefab; // 読み取り専用のプロパティ
+    public GameObject EnemyPrefab => enemyPrefab; // 隱ｭ縺ｿ蜿悶ｊ蟆ら畑縺ｮ繝励Ο繝代ユ繧｣
 
     [SerializeField] private int enemyCount;
     public int EnemyCount => enemyCount;

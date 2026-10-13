@@ -11,6 +11,6 @@ public class TitleManager : MonoBehaviour
 
     public void OnSettingsButtonClicked()
     {
-        // İ’è‰æ–Ê‚Ö‚Ì‘JˆÚˆ—‚ğ‚±‚±‚É’Ç‰Á
+        // è¨­å®šç”»é¢ã¸ã®é·ç§»å‡¦ç†ã‚’ã“ã“ã«è¿½åŠ 
     }
 }

@@ -65,7 +65,7 @@ public class Boss : Enemy
 
     protected override void CheckBoundary()
     {
-        //ˆ—
+        //å‡¦ç†
     }
 
 

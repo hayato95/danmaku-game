@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void CheckBoundary()
     {
-        if (Mathf.Abs(transform.position.x) > 3f || Mathf.Abs(transform.position.y) > 6f) // ‰æ–ÊŠO‚Éo‚½‚ç
+        if (Mathf.Abs(transform.position.x) > 3f || Mathf.Abs(transform.position.y) > 6f) // ç”»é¢å¤–ã«å‡ºãŸã‚‰
         {
             OnDied();
         }
@@ -46,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {
             enemyHP--;
-            Destroy(other.gameObject); // ƒvƒŒƒCƒ„[‚Ì’e‚ğ”j‰ó
+            Destroy(other.gameObject); // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’ç ´å£Š
             if(enemyHP <= 0)
             {
                 OnDied();
@@ -56,7 +56,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void OnDied()
     {
-        WaveManager.Instance.OnEnemyDefeated(); // WaveManager‚É“G‚ª“|‚³‚ê‚½‚±‚Æ‚ğ’Ê’m
+        WaveManager.Instance.OnEnemyDefeated(); // WaveManagerã«æ•µãŒå€’ã•ã‚ŒãŸã“ã¨ã‚’é€šçŸ¥
         Destroy(gameObject);
     }
 
