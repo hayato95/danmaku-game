@@ -4,9 +4,9 @@ public class EnemyCircleOrbit : Enemy
 {
     [SerializeField] private Vector2 orbitCenter;
     [SerializeField] private float orbitRadius;
-    [SerializeField] private float orbitSpeed; //Šp‘¬“x
-    [SerializeField] private float centerSpeed; //dS‚ÌˆÚ“®‘¬“x
-    [SerializeField] private float centerDirection; //dS‚ÌˆÚ“®•ûŒü(1‚Í‰EA-1‚Í¶)
+    [SerializeField] private float orbitSpeed; //è§’é€Ÿåº¦
+    [SerializeField] private float centerSpeed; //é‡å¿ƒã®ç§»å‹•é€Ÿåº¦
+    [SerializeField] private float centerDirection; //é‡å¿ƒã®ç§»å‹•æ–¹å‘(1ã¯å³ã€-1ã¯å·¦)
 
 
 

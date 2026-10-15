@@ -48,7 +48,7 @@ public class EnemyFloat : Enemy
 
     private IEnumerator EnemyMoveRoutine()
     {
-        // “üêŠ®—¹‚Ü‚Å‘Ò‚Â
+        // å…¥å ´å®Œäº†ã¾ã§å¾…ã¤
         yield return new WaitUntil(() => transform.position.x >= 0f);
 
         currentState = MoveState.Staying;

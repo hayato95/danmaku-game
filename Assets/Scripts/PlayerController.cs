@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private GameObject bulletPrefab; // © ’Ç‰Á
+    [SerializeField] private GameObject bulletPrefab; // â† è¿½åŠ 
     private Rigidbody2D playerRigidbody;
     private Vector2 moveDirection;
     private Vector3 minbounds;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(PauseManager.Instance.isPaused) return; // ƒQ[ƒ€‚ªˆê’â~’†‚È‚çXV‚µ‚È‚¢
+        if(PauseManager.Instance.isPaused) return; // ã‚²ãƒ¼ãƒ ãŒä¸€æ™‚åœæ­¢ä¸­ãªã‚‰æ›´æ–°ã—ãªã„
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector2(clampedX, clampedY);
     }
 
-    //Quaternion.identity‚Í‰ñ“]‚È‚µ‚Ì‚±‚Æ
+    //Quaternion.identityã¯å›è»¢ãªã—ã®ã“ã¨
     void OnFire(InputValue inputValue)
     {
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
@@ -39,10 +39,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // G‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªEnemyBulletƒŒƒCƒ„[‚©Šm”F
+        // è§¦ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒEnemyBulletãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ç¢ºèª
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
         {
-            SceneManager.LoadScene("GameOverScene"); // GameOverScene‚É‘JˆÚ)
+            SceneManager.LoadScene("GameOverScene"); // GameOverSceneã«é·ç§»)
         }
     }
 }   
